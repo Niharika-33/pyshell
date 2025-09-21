@@ -1,40 +1,40 @@
 Terminal Simulator
 
-A web-based terminal simulator with a Python backend and Vue.js frontend.
+A fully functional, web-based command-line terminal with a robust Python backend and a modern Vue.js frontend. This project replicates core terminal behaviors in a safe and secure web environment.
 Features
 
-    Real-time terminal simulation
+    Core Command Execution: Handles standard file and directory operations like ls, cd, pwd, mkdir, and rm.
 
-    File and directory operations (ls, cd, pwd, mkdir, rm)
+    System Monitoring: Integrates with the host system to display CPU, memory, and process information.
 
-    System monitoring commands (cpu, memory, processes)
+    Advanced Command Parsing: Securely handles complex commands with piping (|) and output redirection (>) without relying on the system shell.
 
-    Command history navigation (arrow keys)
+    Intelligent Autocomplete: Provides dynamic, real-time command suggestions as you type.
 
-    Clear screen support
+    Command History: Navigate through previous commands using the up and down arrow keys.
 
-    Responsive terminal interface with Tailwind CSS and DaisyUI styling
+    Themable UI: A clean, responsive interface with a toggle for light and dark themes.
 
 Architecture
 Backend (Python)
 
-    Built with Flask
+The backend is built with Flask and acts as a secure, stateless API. It is responsible for all low-level system interactions.
 
-    Handles command execution and system operations
+    Secure Execution: Commands are parsed with shlex and executed as lists of arguments to prevent shell injection vulnerabilities.
 
-    Provides REST API for frontend communication
+    REST API: Exposes endpoints for command execution and autocomplete suggestions.
 
-    Uses psutil for system monitoring
+    System Interaction: Uses built-in os and shutil modules for file operations and psutil for system monitoring.
 
 Frontend (Vue.js)
 
-    Single-page application with Vue 3 and Vite
+The frontend is a single-page application built with Vue 3 and Vite, designed for a responsive and intuitive user experience.
 
-    Uses Axios for API communication
+    API Communication: Uses axios to send commands to the Python backend and display the output in real-time.
 
-    Styled with Tailwind CSS and DaisyUI
+    Styling: Leverages Tailwind CSS for responsive design and a clean, consistent look. Custom CSS is used for unique effects like the blinking cursor.
 
-    Terminal-like interface with command history
+    State Management: Manages application state, including command history, terminal output, and theme settings.
 
 Setup Instructions
 Prerequisites
@@ -71,39 +71,6 @@ Running the Frontend
 
     npm run dev
 
-Available Commands
-
-    ls - List directory contents
-
-    cd <directory> - Change directory
-
-    pwd - Print working directory
-
-    mkdir <directory> - Create directory
-
-    rm <file/directory> - Remove file or directory
-
-    cpu - Show CPU usage
-
-    memory - Show memory usage
-
-    processes - Show running processes
-
-    clear - Clear terminal screen
-
 Development
 
-The application follows a clean separation of concerns:
-
-    Backend handles all system operations and provides a REST API
-
-    Frontend handles the UI and user interactions
-
-    Communication happens via HTTP requests to the backend API
-
-License
-
-This project is licensed under the MIT License.
-
-low level :
-request -> parse -> execute components -> combine results -> respond model.
+The application is built on a clean separation of concerns, with the backend handling all logic and the frontend managing the user interface. This makes it easy to extend and maintain.
